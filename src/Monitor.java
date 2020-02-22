@@ -30,6 +30,9 @@ public class Monitor {
 	    }); 
 				
 		System.out.println("Starting system memory and cpu monitoring... ");
+		System.out.println("---------------------------------------------");
+		System.out.println("Updates every minute");
+		System.out.println("---------------------------------------------");
 		
 		csvWriter.append("systemMemoryMb" +";"+"freeMemoryMb"+";"+"cpuLoad" + System.lineSeparator());
     	csvWriter.flush();
@@ -44,6 +47,7 @@ public class Monitor {
 			    	double cpuLoad = ((com.sun.management.OperatingSystemMXBean) ManagementFactory.getOperatingSystemMXBean()).getSystemCpuLoad();
 			    	String cpuLoadRnd = df.format(cpuLoad);
 			    	
+			    	System.out.println("free memory: " + freeMemoryMb + " | CPU load: " + cpuLoadRnd);
 			    	csvWriter.append(totalMemoryMb +";"+freeMemoryMb+";"+cpuLoadRnd + System.lineSeparator());
 			    	csvWriter.flush();
 			    	
