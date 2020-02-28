@@ -1,7 +1,6 @@
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.management.ManagementFactory;
-import java.lang.management.OperatingSystemMXBean;
 import java.text.DecimalFormat;
 
 public class Monitor {
@@ -12,8 +11,6 @@ public class Monitor {
 		DecimalFormat df = new DecimalFormat("0.00");
 		
 		FileWriter csvWriter = new FileWriter("SystemMonitor_" + System.currentTimeMillis() + ".csv");
-		Runtime instance = Runtime.getRuntime();
-		OperatingSystemMXBean operatingSystemMXBean = ManagementFactory.getOperatingSystemMXBean();
 		
 	    Runtime.getRuntime().addShutdownHook(new Thread() 
 	    { 
@@ -39,7 +36,7 @@ public class Monitor {
 		
 		while (true) {
 					
-					//recording every minute 60000
+					//recording every minute -> 60000 ms
 					Thread.sleep(60000);
 
 			    	long totalMemoryMb = ((com.sun.management.OperatingSystemMXBean) ManagementFactory.getOperatingSystemMXBean()).getTotalPhysicalMemorySize() / mb;
